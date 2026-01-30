@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrepreneurship & Startups - EventHub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f7971e, #ffd200, #36d1dc, #5b86e5);
+      background-size: 400% 400%;
+      animation: gradientShift 14s ease infinite;
+      color: #333;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.18);
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      color: #f7971e;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .event-img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin: 18px 0 24px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+    }
+
+    .event-desc {
+      font-size: 1.06rem;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 26px;
+      text-align: left;
+    }
+
+    .event-desc b { color: #5b86e5; }
+
+    .highlights {
+      text-align: left;
+      margin: 8px 0 28px;
+      padding-left: 18px;
+    }
+
+    .highlights li {
+      margin: 8px 0;
+    }
+
+    .register-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(90deg, #f7971e, #ff512f);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+
+    .register-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      filter: brightness(1.05);
+    }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      font-size: 0.95rem;
+      margin-top: 34px;
+      padding: 14px;
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Entrepreneurship & Startups Seminar</h1>
+    <p class="subtitle">Innovate • Build • Scale</p>
+
+    <img
+      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+      alt="Entrepreneurship Seminar"
+      class="event-img"
+    />
+
+    <div class="event-desc">
+      The <b>Entrepreneurship & Startups Seminar</b> is a platform for aspiring entrepreneurs, 
+      innovators, and business enthusiasts to learn how to transform ideas into successful ventures. 
+      This seminar covers <b>startup strategies, funding opportunities, innovation frameworks, and 
+      scaling methods</b>. Join us to connect with mentors, network with peers, and gain practical 
+      insights to kickstart your entrepreneurial journey.
+    </div>
+
+    <ul class="highlights">
+      <li><b>Focus Areas:</b> Startup ecosystem, funding, business models, scaling strategies</li>
+      <li><b>Audience:</b> Students, professionals, aspiring entrepreneurs, innovators</li>
+      <li><b>Opportunities:</b> Networking, mentorship sessions, startup pitches</li>
+      <li><b>Benefits:</b> Skill development, guidance, and certificate of participation</li>
+    </ul>
+
+    <a href="https://example.com/register" class="register-btn">Register Now</a>
+  </div>
+
+  <footer>© 2025 EventHub • All Rights Reserved</footer>
+</body>
+</html>

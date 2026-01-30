@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrumental Music Competition - EventHub</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff, #ff6a88, #fbc2eb);
+      background-size: 400% 400%;
+      animation: gradientBG 14s ease infinite;
+      color: #333;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 15px;
+      color: #ff4e50;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .event-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    .register-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(to right, #36d1dc, #5b86e5);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .register-btn:hover {
+      background: linear-gradient(to right, #5b86e5, #36d1dc);
+      transform: scale(1.07);
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎶 Instrumental Music Competition</h1>
+    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" 
+         alt="Instrumental Music Competition" class="event-img">
+    <p>
+      Music speaks when words fail.  
+      The <b>Instrumental Music Competition</b> invites talented performers to showcase their skills with melodies that touch the soul.  
+      From strings to percussion, from classical to contemporary – every instrument has a story to tell.  
+      Let your rhythm and harmony captivate the audience and create magic on stage! ✨
+    </p>
+    <a href="https://example.com/register" class="register-btn">Register Now</a>
+  </div>
+</body>
+</html>

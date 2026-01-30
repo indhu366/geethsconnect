@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements - EventHub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      color: #333;
+      text-align: center;
+    }
+
+    /* 📢 Animated Icon */
+    .announcement-icon {
+      font-size: 4rem;
+      margin-top: 20px;
+      animation: zoomEffect 1.2s infinite alternate ease-in-out;
+    }
+
+    @keyframes zoomEffect {
+      from {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: scale(1.4);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 10px 0 30px;
+      color: #2c3e50;
+    }
+
+    /* 📋 Announcement Cards */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: #e74c3c;
+    }
+
+    .date {
+      font-size: 0.9rem;
+      color: #777;
+      margin: 5px 0 10px;
+    }
+
+    .desc {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    /* Empty State */
+    .empty {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 📢 Animated Icon -->
+  <div class="announcement-icon">📢</div>
+  <h1><i>Announcements</i></h1>
+
+  <div class="container">
+    <!-- Example Announcement Cards -->
+    <div class="card">
+      <h2>AI Seminar Time Changed</h2>
+      <div class="date">🗓 Posted on: Aug 28, 2025</div>
+      <div class="desc">The AI & Future Tech seminar will now start at <b>2:00 PM</b> instead of 10:00 AM.</div>
+    </div>
+
+    <div class="card">
+      <h2>Dance Competition Registration Closing Soon</h2>
+      <div class="date">🗓 Posted on: Aug 26, 2025</div>
+      <div class="desc">Registrations for the Dance Competition will close on <b>Sept 1, 2025</b>. Hurry up!</div>
+    </div>
+
+    <div class="card">
+      <h2>🏆 Hackathon Results Announced</h2>
+      <div class="date">🗓 Posted on: Aug 20, 2025</div>
+      <div class="desc">Winners of the 24hr Tech Challenge Hackathon have been announced! Check the Past Events page for details.</div>
+    </div>
+  </div>
+
+  <!-- Example Empty State (Uncomment if needed) -->
+  <!-- <div class="empty">🎉 No new announcements at the moment. Stay tuned!</div> -->
+
+</body>
+</html>

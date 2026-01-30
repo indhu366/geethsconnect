@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .upload-container {
+      background: #fff;
+
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      width: 500px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .upload-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .event-name {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+
+    .drop-area {
+      border: 2px dashed #4a90e2;
+      border-radius: 10px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+      background: #fafafa;
+      cursor: pointer;
+    }
+
+    .drop-area.dragover {
+      background: #e6f2ff;
+      border-color: #2575fc;
+    }
+
+    .drop-area p {
+      margin: 10px 0 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .drop-icon {
+      font-size: 40px;
+      color: #4a90e2;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background: #4a90e2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background: #357abd;
+    }
+
+    .file-list {
+      margin-top: 25px;
+      text-align: left;
+    }
+
+    .file-item {
+      margin-bottom: 15px;
+    }
+
+    .file-name {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .progress {
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: #eee;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #4a90e2;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="upload-container">
+    <h2>File Upload</h2>
+        <input type="text" id="eventName" class="event-name" placeholder="Enter Event Name">
+    <label class="drop-area" id="dropArea" for="fileInput">
+      <div class="drop-icon">📂</div>
+      <p>Drag & Drop files here</p>
+      <p>or click to select</p>
+      <input type="file" id="fileInput" class="file-input" multiple>
+    </label>
+    <button class="btn" onclick="fileInput.click()">Choose File</button>
+
+    <div class="file-list" id="fileList"></div>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const fileList = document.getElementById("fileList");
+    const dropArea = document.getElementById("dropArea");
+     const eventName = document.getElementById("eventName");
+     // Check event name before uploading
+    function isEventNameFilled() {
+      if (eventName.value.trim() === "") {
+        alert("Please enter the Event Name before uploading files!");
+        return false;
+      }
+      return true;
+    }
+
+    // Handle drag & drop
+    dropArea.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      dropArea.classList.add("dragover");
+    });
+
+    dropArea.addEventListener("dragleave", () => {
+      dropArea.classList.remove("dragover");
+    });
+
+    dropArea.addEventListener("drop", (e) => {
+      e.preventDefault();
+      dropArea.classList.remove("dragover");
+      fileInput.files = e.dataTransfer.files;
+      handleFiles();
+    });
+
+    fileInput.addEventListener("change", handleFiles);
+
+    function handleFiles() {
+      const files = Array.from(fileInput.files);
+      fileList.innerHTML = "";
+
+      files.forEach(file => {
+        const fileItem = document.createElement("div");
+        fileItem.classList.add("file-item");
+
+        const fileName = document.createElement("div");
+        fileName.classList.add("file-name");
+        fileName.innerText = file.name + " - " + Math.round(file.size / 1024) + " KB";
+
+        const progress = document.createElement("div");
+        progress.classList.add("progress");
+
+        const progressBar = document.createElement("div");
+        progressBar.classList.add("progress-bar");
+
+        progress.appendChild(progressBar);
+        fileItem.appendChild(fileName);
+        fileItem.appendChild(progress);
+        fileList.appendChild(fileItem);
+
+        // Fake progress simulation
+        let progressValue = 0;
+        const interval = setInterval(() => {
+          if (progressValue >= 100) {
+            clearInterval(interval);
+          } else {
+            progressValue += 10;
+            progressBar.style.width = progressValue + "%";
+          }
+        }, 300);
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshops</title>
+  <style>
+  @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #151515;
+  --clr: #5b1697;
+}
+
+/* Heading */
+.page-heading {
+  text-align: center;
+  color: white;
+  font-size: 3em;
+  margin: 40px 0 20px 0;
+}
+
+/* Container for cards */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  justify-items: center;
+}
+
+/* Card styling (same as before) */
+.card {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.card:hover {
+  width: 600px;
+  transition-delay: 0.5s;
+}
+
+.card .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .circle::before {
+  content: "";
+  position: absolute;
+  top: 30;
+  left: 2;
+  right: 2;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: #702593;
+  border: 8px solid var(--clr);
+  transition: 0.5s, background 0.5s;
+  transition-delay: 0.75s, 1s;
+  filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
+}
+
+.card:hover .circle::before {
+  transition-delay: 0.5s;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--clr);
+}
+
+.card .circle .logo {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  border-radius: 300px;
+}
+
+.card:hover .circle .logo {
+  transform: scale(0);
+  transition-delay: 0s;
+}
+
+.card .product_img {
+  position: absolute;
+  top: 50%;
+  width: 400px;
+  left: 70%;
+  transform: translate(-50%, -50%) scale(0) rotate(315deg);
+  height: 200px;
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover .product_img {
+  transition-delay: 0.75s;
+  top: 50%;
+  left: 85%;
+  height: 300px;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+.card .content {
+  position: absolute;
+  width: 50%;
+  left: 20%;
+  padding: 20px;
+  opacity: 0;
+  transition: 0.5s;
+  visibility: hidden;
+}
+
+.card:hover .content {
+  transition-delay: 0.75s;
+  opacity: 1;
+  visibility: visible;
+  left: 20px;
+}
+
+.card .content h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 2.5em;
+  line-height: 1em;
+}
+
+.card .content p {
+  color: #fff;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.card .content button {
+  position: relative;
+  color: #fff;
+  background: #d52b1e;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+  </style>
+</head>
+<body>
+  <!-- Heading -->
+  <h1 class="page-heading"><i>Cultural</i></h1>
+
+  <!-- Cards -->
+  <div class="cards-container">
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRR0fnp9-wtgriTMk9ez1gtFZnliHmYvHyhQ&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRR0fnp9-wtgriTMk9ez1gtFZnliHmYvHyhQ&s" class="product_img">
+      <div class="content">
+        <h2>Singing</h2>
+        <p>Unleash your voice, passion, and melody as you captivate the audience with every note.</p>
+        <button>Register Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://i.pinimg.com/474x/16/48/17/16481789f5e38f2377e0909e3b2a5867.jpg" class="logo">
+      </div>
+      <img src="https://i.pinimg.com/474x/16/48/17/16481789f5e38f2377e0909e3b2a5867.jpg" class="product_img">
+      <div class="content">
+        <h2>Dance</h2>
+        <p>Showcase your rhythm, creativity, and passion as you move to the beat and light up the stage with your performance.
+          time:02:00pm<br>
+          date:12-03-2025<br>
+          venue:rangamandapa<br>
+          coordinator: indu <br>
+          4GW23CS089<br>
+          coordinator: shalini<br>
+          4GW23CS033
+
+        </p>
+        <button>Register Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://imageio.forbes.com/specials-images/imageserve/67dc9589936a79a9de9f91b7/Theater-masks-in-front-of-a-red-curtain--3D-rendering/0x0.jpg?format=jpg&crop=4174,2780,x0,y0,safe&width=960" class="logo">
+      </div>
+      <img src="https://imageio.forbes.com/specials-images/imageserve/67dc9589936a79a9de9f91b7/Theater-masks-in-front-of-a-red-curtain--3D-rendering/0x0.jpg?format=jpg&crop=4174,2780,x0,y0,safe&width=960" class="product_img">
+      
+      <div class="content">
+        <h2>Drama & Skits Competition</h2>
+        <p>Express emotions, creativity, and storytelling skills as you bring characters to life on stage.</p>
+        <button>Register Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRthObcViqjePenXlVZ0RRvJzADslXvNwp50w&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRthObcViqjePenXlVZ0RRvJzADslXvNwp50w&s" class="product_img">
+      <div class="content">
+        <h2>Art and Craft</h2>
+        <p>Showcase your imagination, creativity, and skills by turning simple ideas into beautiful masterpieces....</p>
+        <button>Register Now</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeethaConnects - Home</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight:bolder;
+    }
+
+    /* 🎓 College Palette (from your logo) */
+    :root{
+      --maroon:#860C5C;
+      --red:#F65B4B;
+      --soft:#E8B8C2;
+      --white:#ffffff;
+      --text:#1d1d1d;
+
+      --glass: rgba(255,255,255,0.22);
+      --border: rgba(255,255,255,0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    /* 🌈 Professional College Gradient Background */
+    body{
+  margin: 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+  background: linear-gradient(135deg,
+    rgba(0, 51, 153, 0.12),   /* royal blue */
+    rgba(0, 120, 255, 0.10),  /* light blue */
+    rgba(255, 140, 0, 0.10)   /* orange */
+  );
+
+  min-height: 100vh;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+
+    a{ text-decoration:none; color:inherit; }
+
+    /* 💫 Navbar */
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 18px;
+
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      background: rgba(255,255,255,0.70);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(134,12,92,0.18);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    .navbar h2{
+      margin:0;
+      font-size:20px;
+      color:var(--maroon);
+      font-weight:800;
+      letter-spacing:0.4px;
+    }
+
+    .menu-icon{
+      font-size:28px;
+      cursor:pointer;
+      color:var(--maroon);
+      transition:0.25s;
+      user-select:none;
+    }
+    .menu-icon:hover{ transform:scale(1.05); }
+
+    /* 👤 Profile */
+    .profile-container{ position:relative; }
+    .profile{
+      cursor:pointer;
+      font-size:26px;
+      transition:0.25s;
+      user-select:none;
+    }
+    .profile:hover{ transform:scale(1.12); }
+
+    .profile-menu{
+      display:none;
+      position:absolute;
+      right:0;
+      top:48px;
+      min-width:160px;
+
+      background: rgba(255,255,255,0.92);
+      border:1px solid rgba(134,12,92,0.12);
+      border-radius:14px;
+      box-shadow:0 12px 25px rgba(0,0,0,0.18);
+      overflow:hidden;
+    }
+
+    .profile-menu a{
+      display:block;
+      padding:12px 16px;
+      font-size:14px;
+      color:#333;
+      transition:0.25s;
+      font-weight:500;
+    }
+    .profile-menu a:hover{
+      background: linear-gradient(90deg, var(--maroon), var(--red));
+      color:var(--white);
+    }
+
+    /* 🧭 Sidebar */
+    .sidebar{
+      position:fixed;
+      top:0;
+      left:-280px;
+      width:270px;
+      height:100%;
+      padding-top:70px;
+      z-index:1100;
+
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(16px);
+      border-right: 1px solid rgba(134,12,92,0.16);
+      box-shadow: 6px 0 25px rgba(0,0,0,0.10);
+
+      transition:0.35s ease;
+    }
+
+    .sidebar a{
+      display:block;
+      padding:14px 20px;
+      color:#2b2b2b;
+      font-weight:600;
+      font-size:15px;
+      transition:0.25s;
+    }
+
+    .sidebar a:hover{
+      background: linear-gradient(90deg, var(--maroon), var(--red));
+      color:var(--white);
+      border-radius:0 18px 18px 0;
+      transform:translateX(6px);
+    }
+
+    /* 🔍 Search Bar */
+    .search-bar{
+      margin:24px auto 30px;
+      max-width:650px;
+      padding:0 16px;
+      text-align:center;
+    }
+
+    .search-bar input{
+      width:100%;
+      padding:14px 18px;
+      border-radius:999px;
+      border:2px solid rgba(134,12,92,0.35);
+      outline:none;
+      font-size:15px;
+
+      background: rgba(255,255,255,0.85);
+      transition:0.3s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .search-bar input:focus{
+      border-color: var(--red);
+      box-shadow: 0 0 0 4px rgba(246,91,75,0.18);
+    }
+
+    /* 🖼️ Carousel */
+    .carousel{
+      position:relative;
+      max-width:1000px;
+      margin:0 auto;
+      overflow:hidden;
+      border-radius:18px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(134,12,92,0.12);
+    }
+
+    #slides{
+      display:flex;
+      transition:transform 0.6s ease-in-out;
+    }
+
+    #slides > div{
+      min-width:100%;
+      position:relative;
+    }
+
+    #slides img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .slide-text{
+      position:absolute;
+      bottom:18px;
+      left:18px;
+      padding:8px 14px;
+      border-radius:12px;
+
+      background: rgba(255,255,255,0.85);
+      border:1px solid rgba(134,12,92,0.12);
+      font-weight:800;
+      color:var(--maroon);
+      font-size:14px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .carousel-buttons{
+      position:absolute;
+      top:50%;
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      padding:0 12px;
+      transform:translateY(-50%);
+      pointer-events:none;
+    }
+
+    .carousel-buttons button{
+      pointer-events:auto;
+      background: rgba(255,255,255,0.70);
+      border:1px solid rgba(134,12,92,0.15);
+      color:var(--maroon);
+      font-size:20px;
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      cursor:pointer;
+      transition:0.25s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.10);
+    }
+
+    .carousel-buttons button:hover{
+      background: linear-gradient(135deg, var(--maroon), var(--red));
+      color:var(--white);
+      transform:scale(1.05);
+    }
+
+    /* Dots */
+    .dots{
+      text-align:center;
+      margin:14px 0 0;
+    }
+
+    .dot{
+      height:11px;
+      width:11px;
+      background: rgba(134,12,92,0.25);
+      border-radius:50%;
+      margin:0 5px;
+      display:inline-block;
+      transition:0.25s;
+      cursor:pointer;
+    }
+
+    .active-dot{
+      background: var(--maroon);
+      box-shadow: 0 0 10px rgba(134,12,92,0.45);
+      transform:scale(1.1);
+    }
+
+    /* 📦 Categories */
+    .categories{
+      margin:50px auto 40px;
+      max-width:1000px;
+      padding:0 16px;
+
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap:18px;
+    }
+
+    .category-card{
+      background: rgba(255,255,255,0.78);
+      border:1px solid rgba(134,12,92,0.12);
+      border-radius:18px;
+      padding:28px 18px;
+      text-align:center;
+      transition:0.25s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .category-card span{
+      font-size:40px;
+      display:block;
+      margin-bottom:10px;
+    }
+
+    .category-card:hover{
+      transform:translateY(-6px);
+      border:1px solid rgba(246,91,75,0.60);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.10);
+    }
+
+    /* 📱 Mobile Responsive Improvements */
+    @media(max-width:600px){
+      .navbar{ padding:12px 14px; }
+      .navbar h2{ font-size:18px; }
+      #slides img{ height:210px; }
+      .categories{
+        grid-template-columns: repeat(2, 1fr);
+        gap:14px;
+      }
+      .category-card{ padding:22px 12px; }
+      .category-card span{ font-size:34px; }
+      .sidebar{ width:240px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
+    <h2>GeethaConnects</h2>
+    <div class="profile-container">
+      <span class="profile" onclick="toggleProfileMenu()">👤</span>
+      <div class="profile-menu" id="profileMenu">
+        <a href="#">My Profile</a>
+        <a href="#">Settings</a>
+        <a href="#" onclick="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="homepage.html">🎉 Events</a>
+    <a href="pasteve.html">🕰️ Past Events</a>
+    <a href="gall.html">📷 Gallery</a>
+    <a href="feed.html">💬 Feedback</a>
+    <a href="saved.html">🔖 Saved</a>
+    <a href="ann.html">📢 Announcements</a>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search events...">
+  </div>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <div id="slides">
+      <div>
+        <img src="https://picsum.photos/1000/220?random=1" alt="Banner 1">
+        <div class="slide-text">🔥 Upcoming Tech Fest</div>
+      </div>
+      <div>
+        <img src="https://picsum.photos/1000/220?random=2" alt="Banner 2">
+        <div class="slide-text">🎭 Cultural Night</div>
+      </div>
+      <div>
+        <img src="https://picsum.photos/1000/220?random=3" alt="Banner 3">
+        <div class="slide-text">⚡ Hackathon Challenge</div>
+      </div>
+    </div>
+
+    <div class="carousel-buttons">
+      <button onclick="prevSlide()">❮</button>
+      <button onclick="nextSlide()">❯</button>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="dots" id="dots"></div>
+
+  <!-- Categories -->
+  <div class="categories">
+    <a href="work.html"><div class="category-card"><span>🎤</span>Workshops</div></a>
+    <a href="sports.html"><div class="category-card"><span>🏆</span>Sports</div></a>
+    <a href="cultural.html"><div class="category-card"><span>🎭</span>Cultural</div></a>
+    <a href="tech.html"><div class="category-card"><span>💻</span>Technical</div></a>
+    <a href="semi.html"><div class="category-card"><span>📚</span>Seminars</div></a>
+    <a href="hack.html"><div class="category-card"><span>⚡</span>Hackathons</div></a>
+  </div>
+
+  <script>
+    // Sidebar toggle
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.left = (sidebar.style.left === "0px") ? "-280px" : "0px";
+    }
+
+    // Profile dropdown toggle
+    function toggleProfileMenu() {
+      const menu = document.getElementById("profileMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    // Close profile menu if clicked outside
+    window.addEventListener("click", function(e) {
+      if (!e.target.matches('.profile')) {
+        document.getElementById("profileMenu").style.display = "none";
+      }
+    });
+
+    // Logout redirect
+    function logout() {
+      window.location.href = "login.html";
+    }
+
+    // Carousel functionality
+    let currentIndex = 0;
+    const slides = document.getElementById("slides");
+    const totalSlides = slides.children.length;
+    const dotsContainer = document.getElementById("dots");
+
+    // Create dots
+    for (let i = 0; i < totalSlides; i++) {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      dot.addEventListener("click", () => showSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(index) {
+      if (index >= totalSlides) currentIndex = 0;
+      else if (index < 0) currentIndex = totalSlides - 1;
+      else currentIndex = index;
+
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active-dot", i === currentIndex);
+      });
+    }
+
+    function nextSlide() { showSlide(currentIndex + 1); }
+    function prevSlide() { showSlide(currentIndex - 1); }
+
+    setInterval(nextSlide, 4000);
+    showSlide(0);
+  </script>
+
+</body>
+</html>

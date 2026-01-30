@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports</title>
+  <style>
+  @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #ffe6f0, #e6f0ff);
+  --clr: #d96c92;
+}
+/* Heading */
+.page-heading {
+  text-align: center;
+  color: #4b2e2e;
+  font-size: 3em;
+  margin: 40px 0 10px 0;
+}
+.sub-heading {
+  text-align: center;
+  color: #444;
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+/* Container */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  justify-items: center;
+}
+
+/* Card */
+.card {
+  position: relative;
+  width: 280px;
+  height: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.card:hover {
+  width: 560px;
+  transition-delay: 0.5s;
+}
+
+.card .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .circle::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: #fff0f5;
+  border: 6px solid var(--clr);
+  transition: 0.5s, background 0.5s;
+  transition-delay: 0.75s, 1s;
+  filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 40px var(--clr));
+}
+
+.card:hover .circle::before {
+  transition-delay: 0.5s;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--clr);
+}
+
+.card .circle .logo {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card:hover .circle .logo {
+  transform: scale(0);
+  transition-delay: 0s;
+}
+
+.card .product_img {
+  position: absolute;
+  top: 50%;
+  width: 350px;
+  left: 70%;
+  transform: translate(-50%, -50%) scale(0) rotate(315deg);
+  height: 180px;
+  transition: 0.5s ease-in-out;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.card:hover .product_img {
+  transition-delay: 0.75s;
+  top: 50%;
+  left: 85%;
+  height: 250px;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+.card .content {
+  position: absolute;
+  width: 50%;
+  left: 20%;
+  padding: 20px;
+  opacity: 0;
+  transition: 0.5s;
+  visibility: hidden;
+}
+
+.card:hover .content {
+  transition-delay: 0.75s;
+  opacity: 1;
+  visibility: visible;
+  left: 20px;
+}
+
+.card .content h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 2em;
+  line-height: 1em;
+}
+
+.card .content p {
+  color: #fff;
+  font-size: 1em;
+  line-height: 1.4em;
+}
+
+.card .content button {
+  color: #fff;
+  background: #6c5ce7;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+  </style>
+</head>
+<body>
+  <!-- Heading -->
+  <h1 class="page-heading">Sports</h1>
+
+  <!-- Indoor Games -->
+  <h2 class="sub-heading">Indoor Games</h2>
+  <div class="cards-container">
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgLR_2ULWuhpd2BTWVwDPJDlojqDOVrw75ng&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgLR_2ULWuhpd2BTWVwDPJDlojqDOVrw75ng&s" class="product_img">
+      <div class="content">
+        <h2>Chess</h2>
+        <p>Challenge your strategic mind and sharpen your logical thinking skills with Chess.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc3KTjeWhbB7zGtGcnaJxduk_sZ8IIkof_JA&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc3KTjeWhbB7zGtGcnaJxduk_sZ8IIkof_JA&s" class="product_img">
+      <div class="content">
+        <h2>Carrom</h2>
+        <p>Showcase your precision and accuracy in the classic indoor game Carrom.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFXtO1B3QEJRjxHRo5VmnjxpE-0ZmyiEeCvg&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFXtO1B3QEJRjxHRo5VmnjxpE-0ZmyiEeCvg&s" class="product_img">
+      <div class="content">
+        <h2>Table Tennis</h2>
+        <p>Fast reflexes and speed define this exciting game of table tennis.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Outdoor Games -->
+  <h2 class="sub-heading">Outdoor Games</h2>
+  <div class="cards-container">
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9RgKpoObhmacH3sMIxT0FjCppUFq43qjong&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9RgKpoObhmacH3sMIxT0FjCppUFq43qjong&s" class="product_img">
+      <div class="content">
+        <h2>Cricket</h2>
+        <p>Team spirit, energy, and excitement come alive with Cricket.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRoxEoEKi6KhIGW8zhiEa6DFq2mfteqUtnw&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPRoxEoEKi6KhIGW8zhiEa6DFq2mfteqUtnw&s" class="product_img">
+      <div class="content">
+        <h2>Badminton</h2>
+        <p>Agility and focus meet fun in this energetic sport enjoyed by everyone.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxIJin_SC92XgQ4tUoGh-r1p3wuLfgFsU1Kg&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxIJin_SC92XgQ4tUoGh-r1p3wuLfgFsU1Kg&s" class="product_img">
+      <div class="content">
+        <h2>Kabaddi</h2>
+        <p>Strength, strategy, and speed come together in this traditional Indian sport.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFeAqPt06TrDYa8j_bjIqGnx6M-Qe5lnZQ-Q&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFeAqPt06TrDYa8j_bjIqGnx6M-Qe5lnZQ-Q&s" class="product_img">
+      <div class="content">
+        <h2>Volleyball</h2>
+        <p>Boost your teamwork, agility, and reflexes with Volleyball while enjoying the thrill of every serve, spike, and rally.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_bPtJ9N6h16FRg8nWJNnzZR1gmhXL3D5lkg&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_bPtJ9N6h16FRg8nWJNnzZR1gmhXL3D5lkg&s" class="product_img">
+      <div class="content">
+        <h2>Handball</h2>
+        <p>Enhance your speed, coordination, and teamwork with the fast-paced excitement of Handball.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="circle">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQec4fFYGuVmHWd2CArFc8FdqI8FLcYdGsuvQ&s" class="logo">
+      </div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQec4fFYGuVmHWd2CArFc8FdqI8FLcYdGsuvQ&s" class="product_img">
+      <div class="content">
+        <h2>Basketball</h2>
+        <p>Boost your teamwork, speed, and precision as you dribble, pass, and shoot your way to victory on the court.</p>
+        <button>Join Now</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

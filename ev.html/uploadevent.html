@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Section - EventHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4e1751, #4a90e2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .card i {
+      font-size: 60px;
+      color: #4a90e2;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 22px;
+      color: #333;
+      margin: 0;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 30px 15px;
+      }
+      .card i {
+        font-size: 50px;
+      }
+      .card h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Upload Event -->
+    <div class="card" onclick="window.location.href='eventdetails.html'">
+      <i class="fas fa-calendar-plus"></i>
+      <h2>Upload Event</h2>
+    </div>
+    <div class="card" onclick="window.location.href='ea.html'">
+      <i class="fas fa-bullhorn" aria-hidden="true"></i></i>
+      <h2>Announcements</h2>
+    </div>
+
+    <!-- Upload Photos -->
+    <div class="card" onclick="window.location.href='uploadphotos.html'">
+      <i class="fas fa-images"></i>
+      <h2>Upload Photos</h2>
+    </div>
+  </div>
+
+</body>
+</html>

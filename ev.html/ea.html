@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post Announcement</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    textarea {
+        width: 400px;
+        height: 120px;
+        padding: 10px;
+        font-size: 16px;
+        resize: vertical;
+        margin-bottom: 15px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    /* Success message styling */
+    #successMsg {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border-radius: 5px;
+        display: none; /* hidden by default */
+        animation: fadeOut 2s forwards;
+    }
+
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { opacity: 0; display: none; }
+    }
+</style>
+</head>
+<body>
+
+<h1>📢 Post an Announcement</h1>
+<textarea id="announcementInput" placeholder="Enter your announcement here..."></textarea>
+<button onclick="postAnnouncement()">Post Announcement</button>
+
+<div id="successMsg">🎉 Announcement posted successfully!</div>
+
+<script>
+function postAnnouncement() {
+    const input = document.getElementById('announcementInput');
+    const message = input.value.trim();
+
+    if(message === "") {
+        alert("Please enter an announcement!");
+        return;
+    }
+
+    // Save to localStorage
+    let announcements = JSON.parse(localStorage.getItem('announcements') || "[]");
+    announcements.unshift(message);
+    localStorage.setItem('announcements', JSON.stringify(announcements));
+
+    // Show success message
+    const successMsg = document.getElementById('successMsg');
+    successMsg.style.display = 'block';
+    
+    // Reset animation
+    successMsg.style.animation = 'none';
+    successMsg.offsetHeight; // trigger reflow
+    successMsg.style.animation = 'fadeOut 2s forwards';
+
+    // Clear textarea
+    input.value = "";
+}
+</script>
+
+</body>
+</html>

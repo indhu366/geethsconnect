@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    background: 
+        radial-gradient(circle at 20% 30%, red, transparent 40%),
+        radial-gradient(circle at 80% 20%, orange, transparent 40%),
+        radial-gradient(circle at 50% 80%, yellow, transparent 40%),
+        radial-gradient(circle at 10% 70%, green, transparent 40%),
+        radial-gradient(circle at 90% 60%, blue, transparent 40%),
+        radial-gradient(circle at 30% 90%, indigo, transparent 40%),
+        radial-gradient(circle at 70% 50%, violet, transparent 40%);
+    background-color: rgb(242, 64, 64);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.todo-container {
+    background: rgba(235, 233, 233, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    width: 95%;
+    max-width: 900px;
+    box-shadow: 0 4px 15px rgba(1, 1, 1, 0.2);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background: hsl(4, 83%, 53%);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #d8291d;
+}
+
+/* Grid layout for tasks */
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.task-card {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+}
+
+.task-card.done {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.time-badge {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: rgba(0,0,0,0.1);
+    font-size: 0.75em;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.delete-btn {
+    background: #ef4444;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 0.8em;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+}

@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../OneDrive/Desktop/simplecalculater"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "indu",
+		"files.associations": {
+			"PRO9.C": "cpp"
+		}
+	}
+}

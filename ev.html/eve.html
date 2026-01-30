@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event HUB</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+     body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url("gsss.webp") no-repeat center center fixed;
+      background-size: cover; /* makes image fill screen */
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center ;
+      text-align: center;
+      flex-direction: column;
+      position:relative;
+      overflow: hidden;
+    }
+    body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit; /* same background as body */
+  filter: blur(6px); /* adjust blur */
+  z-index: -1; /* keep blur behind content */
+  background-size: cover;
+}
+    .main-wrapper {
+      background: none;
+      width: 420px;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .header {
+      position: static;
+      top: 10px;
+      left: 0;
+      right: 10;
+      text-align:center;
+      width: 100%;
+      padding-left: 22px;
+    }
+    .event-title {
+      align-items:center;
+      font-size: 50px;
+      line-height: 1;
+      font-weight: 700;
+      margin-bottom: 0;
+      margin-top: 10;
+      letter-spacing: -2px;
+    }
+    
+    .geethsconnect-title {
+      color: hsl(0, 84%, 50%);
+      font-size: 50px;
+      line-height: 1;
+      font-weight: 500;
+      margin-bottom: 0;
+      margin-top: 10px;
+      letter-spacing: -2px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    }
+    .tagline-title {
+      color: #6b066bf0;
+      font-size: 25px;
+      margin-top: 0;
+      margin-bottom: 28px;
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+    .cards {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 42px;
+      margin-top: 20px;
+      align-items: center;
+    }
+    .card-block {
+      width: 40%;
+      background: rgba(238, 241, 245, 0.761);
+      border-radius: 24px;
+      box-shadow: 0 4px 15px rgba(237, 237, 237, 0.08);
+      padding: 36px 0 30px 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.50s;
+      cursor: pointer;
+    }
+    .card-block:hover {
+      box-shadow: 0 8px 10px rgba(232, 232, 234, 0.18);
+      background: rgba(246, 246, 247, 0.11);
+    }
+    .card-block i {
+      font-size: 60px;
+      color: #0b3bacf0;
+      margin-bottom: 18px;
+    }
+    .collage-title{
+      width:10px;
+      height:30px;
+      justify-content: center;
+      align-items: center;
+      display:flex; 
+      margin:100px 0;
+    } 
+    .collage-title img {
+      margin: auto;
+    width:1000px; /* adjust logo size */
+    height: 150px;
+    }
+    .card-label {
+      font-size: px;
+      color: #111;
+      margin:0;
+      font-weight: 00;
+      letter-spacing: 0.5px;
+      text-align:    center;
+    }
+    @media (max-width: 600px) {
+      .main-wrapper {
+        width: 98vw;
+        min-height: 100vh;
+      }
+      .header {
+        padding-left: 10px;
+      }
+      
+      .event-title {
+        font-size: 50px;
+      }
+      .hub-title {
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+      .card-block {
+        padding: 28px 0 20px 0;
+      }
+      .card-block i {
+        font-size: 90px;
+      }
+      .card-label {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="collage-title">
+      <img src="logo.png">
+    </div>
+  </header>
+    &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;
+  <div class="main-wrapper">
+    <div class="header">
+      <div class="geethsconnect-title">GeethsConnect</div>
+      <div class="tagline-title"><i>"Engage.Empower.Excel"</i></div>
+  
+    </div>
+    <div class="cards">
+      <div class="card-block" onclick="window.location.href='stlioin.html'">
+        <i class="fas fa-calendar-check"></i>
+        <div style="color: #0b3bacf0; button="card-label">Register for Events</div>
+      </div>
+      <div class="card-block" onclick="window.location.href='adminlogin.html'">
+        <i class="fas fa-upload"></i>
+        <div class="card-label" style="color:#0b3bacf0" button="card-label">Upload Events</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

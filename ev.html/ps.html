@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetry & Storytelling Competition - EventHub</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #f093fb, #f5576c, #4facfe, #43e97b);
+      background-size: 400% 400%;
+      animation: gradientBG 14s ease infinite;
+      color: #333;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 15px;
+      color: #8e2de2;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .event-img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    .register-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(to right, #ff512f, #dd2476);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .register-btn:hover {
+      background: linear-gradient(to right, #dd2476, #ff512f);
+      transform: scale(1.07);
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📖 Poetry & Storytelling Competition</h1>
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" 
+         alt="Poetry & Storytelling Competition" class="event-img">
+    <p>
+      Words have the power to move hearts and inspire minds.  
+      Join the <b>Poetry & Storytelling Competition</b> and let your voice paint pictures with emotions.  
+      Whether it’s a heartfelt poem or an engaging story, express your creativity, imagination, and art of narration.  
+      Captivate the audience with your words and leave them inspired! ✨
+    </p>
+    <a href="https://example.com/register" class="register-btn">Register Now</a>
+  </div>
+
+  <footer>
+    © 2025 EventHub | All Rights Reserved
+  </footer>
+</body>
+</html>
