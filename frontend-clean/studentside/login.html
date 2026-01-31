@@ -1,0 +1,62 @@
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="login_box">
+    <div class="login-header">
+      <span>Student Login</span>
+    </div>
+
+    <!-- ✅ Added form -->
+    <form id="loginForm">
+      <div class="input_box">
+        <input type="text" id="studentId" class="input-field" required>
+        <label for="studentId" class="label">Username</label>
+        <i class="bx bx-user icon"></i>
+      </div>
+
+      <div class="input_box">
+        <input type="password" id="pass" class="input-field" required>
+        <label for="pass" class="label">Password</label>
+        <i class="bx bx-lock-alt icon"></i>
+      </div>
+
+      <div class="remember-forgot">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <div class="forgot">
+          <a href="forgot.html">Forgot password?</a>
+        </div>
+      </div>
+
+      <div class="input_box">
+        <input type="submit" class="input-submit" value="Login">
+      </div>
+    </form>
+
+    <div class="register">
+      <span>Don't have an account? <a href="register.html">Register</a></span>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const studentId = document.getElementById("studentId").value.trim();
+
+      // Rule: must start with 4GW + be 10 characters + only letters & numbers
+      const pattern = /^4GW[a-zA-Z0-9]{7}$/;
+
+      if (pattern.test(studentId)) {
+        window.location.href = "homep.html";
+      } else {
+        alert("Wrong.Please try again🥲");
+        document.getElementById("studentId").value = "";
+        document.getElementById("studentId").focus();
+      }
+    });
+  </script>
+  
+</body>

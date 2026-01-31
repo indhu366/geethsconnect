@@ -1,0 +1,84 @@
+<body>
+  <!-- Heading -->
+  <h1 class="page-heading">Workshops</h1>
+
+  <!-- Cards -->
+  <div class="cards-container">
+    <div class="card">
+      <div class="circle">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" class="logo">
+      </div>
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" class="product_img">
+      <div class="content">
+        <h2>Ai & Ml workshop</h2>
+        <p>Join our interactive workshop on Artificial Intelligence and Machine Learning where you’ll learn the fundamentals of AI...</p>
+        <button>Register Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" class="logo">
+      </div>
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" class="product_img">
+      <div class="content">
+        <h2>Web Development</h2>
+        <p>Enhance your skills in web development by learning HTML, CSS, and JavaScript along with modern frameworks...
+          time:02:00pm<br>
+          date:12-03-2025<br>
+          venue:rangamandapa<br>
+          coordinator: indu <br>
+          4GW23CS089<br>
+          coordinator: shalini<br>
+          4GW23CS033
+
+        </p>
+        <button>Register Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" class="logo">
+      </div>
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" class="product_img">
+      <div class="content">
+        <h2>Cybersecurity Workshop</h2>
+        <p>Learn how to protect digital assets, secure networks, and understand common cyber threats...</p>
+        <button>Register Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="circle">
+        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" class="logo">
+      </div>
+      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" class="product_img">
+      <div class="content">
+        <h2>Data Science Workshop</h2>
+        <p>Dive into the world of data! This workshop introduces you to data analysis, visualization, and machine learning using Python...</p>
+        <button>Register Now</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get("category");
+
+  const heading = document.querySelector(".page-heading");
+  const cards = document.querySelectorAll(".card");
+
+  if (category) {
+    heading.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+
+    cards.forEach(card => {
+      if (card.dataset.category !== category) {
+        card.style.display = "none";
+      } else {
+        card.style.display = "block";
+      }
+    });
+  }
+</script>
