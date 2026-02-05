@@ -1,128 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
-    <span class="menu-icon" onclick="toggleSidebar()">☰</span>
-    <h2>GeethsConnect</h2>
-    <div class="profile-container">
-      <span class="profile" onclick="toggleProfileMenu()">👤</span>
-      <div class="profile-menu" id="profileMenu">
-        <a href="#">My Profile</a>
-        <a href="#">Settings</a>
-        <a href="login.html" onclick="logout()">Logout</a>
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="feedback.html">Feedback</a>
+        <a class="btn outline" href="#" id="logoutBtn">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard Content -->
+  <section class="container" style="padding:40px 0;">
+    <div class="card">
+      <h1>Welcome, <span id="studentName">Student</span> 👋</h1>
+      <p style="color:var(--muted); margin-top:6px;">
+        Explore upcoming events, share feedback, and stay connected.
+      </p>
+
+      <div style="margin-top:30px;">
+        <a href="events.html" class="btn orange">View Events</a>
+        <a href="feedback.html" class="btn outline">Give Feedback</a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <a href="dashboard.html">🎉 Events</a>
-    <a href="#">🕰️ Past Events</a>
-    <a href="gallery.html">📷 Gallery</a>
-    <a href="feedback.html">💬 Feedback</a>
-    <a href="#">🔖 Saved</a>
-    <a href="announcements.html">📢 Announcements</a>
-  </div>
-
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search events...">
-  </div>
-
-  <!-- Carousel -->
-  <div class="carousel">
-    <div id="slides">
-      <div>
-        <img src="https://picsum.photos/1000/220?random=1">
-        <div class="slide-text">🔥 Upcoming Tech Fest</div>
-      </div>
-      <div>
-        <img src="https://picsum.photos/1000/220?random=2">
-        <div class="slide-text">🎭 Cultural Night</div>
-      </div>
-      <div>
-        <img src="https://picsum.photos/1000/220?random=3">
-        <div class="slide-text">⚡ Hackathon Challenge</div>
-      </div>
-    </div>
-
-    <div class="carousel-buttons">
-      <button onclick="prevSlide()">❮</button>
-      <button onclick="nextSlide()">❯</button>
-    </div>
-  </div>
-
-  <!-- Dots -->
-  <div class="dots" id="dots"></div>
-
-  <!-- Categories -->
-  <div class="categories">
-    <a href="events.html?category=workshops">
-      <div class="category-card"><span>🎤</span>Workshops</div>
-    </a>
-    <a href="events.html?category=sports">
-      <div class="category-card"><span>🏆</span>Sports</div>
-    </a>
-    <a href="events.html?category=cultural">
-      <div class="category-card"><span>🎭</span>Cultural</div>
-    </a>
-    <a href="events.html?category=technical">
-      <div class="category-card"><span>💻</span>Technical</div>
-    </a>
-    <a href="events.html?category=seminars">
-      <div class="category-card"><span>📚</span>Seminars</div>
-    </a>
-    <a href="events.html?category=hackathons">
-      <div class="category-card"><span>⚡</span>Hackathons</div>
-    </a>
-  </div>
+  <footer class="footer">
+    <div class="container">© 2026 GeethsConnect | Dashboard</div>
+  </footer>
 
   <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.style.left = sidebar.style.left === "0px" ? "-280px" : "0px";
-    }
+    // Check if student is logged in
+    const studentId = localStorage.getItem("studentId");
+    const studentName = localStorage.getItem("studentName");
 
-    function toggleProfileMenu() {
-      const menu = document.getElementById("profileMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    window.addEventListener("click", function(e) {
-      if (!e.target.matches('.profile')) {
-        document.getElementById("profileMenu").style.display = "none";
-      }
-    });
-
-    function logout() {
+    if (!studentId) {
+      alert("Please login first!");
       window.location.href = "login.html";
+    } else {
+      document.getElementById("studentName").innerText = studentName;
     }
 
-    let currentIndex = 0;
-    const slides = document.getElementById("slides");
-    const totalSlides = slides.children.length;
-    const dotsContainer = document.getElementById("dots");
-
-    for (let i = 0; i < totalSlides; i++) {
-      const dot = document.createElement("span");
-      dot.classList.add("dot");
-      dot.addEventListener("click", () => showSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-
-    const dots = document.querySelectorAll(".dot");
-
-    function showSlide(index) {
-      currentIndex = (index + totalSlides) % totalSlides;
-      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((dot, i) => dot.classList.toggle("active-dot", i === currentIndex));
-    }
-
-    function nextSlide() { showSlide(currentIndex + 1); }
-    function prevSlide() { showSlide(currentIndex - 1); }
-
-    setInterval(nextSlide, 4000);
-    showSlide(0);
+    // Logout functionality
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("studentId");
+      localStorage.removeItem("studentName");
+      alert("Logged out successfully!");
+      window.location.href = "login.html";
+    });
   </script>
 
 </body>
+</html>

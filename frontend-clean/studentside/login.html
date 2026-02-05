@@ -1,62 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Login | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="wrapper">
-  <div class="login_box">
-    <div class="login-header">
-      <span>Student Login</span>
-    </div>
 
-    <!-- ✅ Added form -->
-    <form id="loginForm">
-      <div class="input_box">
-        <input type="text" id="studentId" class="input-field" required>
-        <label for="studentId" class="label">Username</label>
-        <i class="bx bx-user icon"></i>
+  <div class="auth-wrap">
+    <div class="card auth-card">
+      <h2>Student Login</h2>
+      <p>Welcome back! Login to continue.</p>
+
+      <form id="studentLoginForm">
+        <label>Email</label>
+        <input type="email" id="loginEmail" required placeholder="example@gmail.com" />
+
+        <label>Password</label>
+        <input type="password" id="loginPassword" required placeholder="********" />
+
+        <button class="btn full" type="submit">Login</button>
+      </form>
+
+      <div class="small-link">
+        New user? <a href="register.html">Create Account</a>
       </div>
 
-      <div class="input_box">
-        <input type="password" id="pass" class="input-field" required>
-        <label for="pass" class="label">Password</label>
-        <i class="bx bx-lock-alt icon"></i>
+      <div class="small-link">
+        <a href="index.html">⬅ Back to Home</a>
       </div>
-
-      <div class="remember-forgot">
-        <div class="remember-me">
-          <input type="checkbox" id="remember">
-          <label for="remember">Remember me</label>
-        </div>
-        <div class="forgot">
-          <a href="forgot.html">Forgot password?</a>
-        </div>
-      </div>
-
-      <div class="input_box">
-        <input type="submit" class="input-submit" value="Login">
-      </div>
-    </form>
-
-    <div class="register">
-      <span>Don't have an account? <a href="register.html">Register</a></span>
     </div>
   </div>
-</div>
 
-<script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const studentId = document.getElementById("studentId").value.trim();
-
-      // Rule: must start with 4GW + be 10 characters + only letters & numbers
-      const pattern = /^4GW[a-zA-Z0-9]{7}$/;
-
-      if (pattern.test(studentId)) {
-        window.location.href = "homep.html";
-      } else {
-        alert("Wrong.Please try again🥲");
-        document.getElementById("studentId").value = "";
-        document.getElementById("studentId").focus();
-      }
-    });
-  </script>
-  
+  <script src="../js/student.js"></script>
 </body>
+</html>

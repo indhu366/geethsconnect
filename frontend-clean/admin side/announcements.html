@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+
+      <nav class="nav-links">
+        <a href="admindashboard.html">Dashboard</a>
+        <a href="addevent.html">Add Event</a>
+        <a href="announcements.html">Announcements</a>
+        <a href="uploadphotos.html">Upload Photos</a>
+        <a class="btn outline" href="adminlogin.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="container" style="padding:30px 0;">
+    <div class="card">
+      <h1 style="font-size:30px;margin-bottom:8px;">📢 Announcements</h1>
+      <p style="color:var(--muted);">Post important updates for students.</p>
+    </div>
+  </section>
+
+  <!-- Announcement Form -->
+  <section class="container" style="margin-bottom:40px;">
+    <div class="card" style="padding:24px;">
+      <h2 style="margin-bottom:14px;">➕ Add New Announcement</h2>
+
+      <form id="announcementForm">
+        <label>Title</label>
+        <input type="text" id="annTitle" required placeholder="Eg: Hackathon Registration Open" />
+
+        <label>Message</label>
+        <textarea id="annMessage" rows="4" required placeholder="Write announcement message..."></textarea>
+
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn orange" type="submit">Post Announcement</button>
+          <button class="btn outline" type="reset">Clear</button>
+          <a class="btn outline" href="admindashboard.html">⬅ Back</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Announcements List -->
+    <div class="card" style="margin-top:22px;padding:24px;">
+      <h2 style="margin-bottom:12px;">📌 Posted Announcements</h2>
+      <div id="announcementList" style="display:grid;gap:12px;"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 GeethsConnect | Announcements
+    </div>
+  </footer>
+
+  <script>
+    const announcementForm = document.getElementById("announcementForm");
+    const announcementList = document.getElementById("announcementList");
+
+    function getAnnouncements() {
+      return JSON.parse(localStorage.getItem("announcements")) || [];
+    }
+
+    function saveAnnouncements(data) {
+      localStorage.setItem("announcements", JSON.stringify(data));
+    }
+
+    function renderAnnouncements() {
+      const anns = getAnnouncements();
+      announcementList.innerHTML = "";
+
+      if (anns.length === 0) {
+        announcementList.innerHTML = "<p style='color:var(--muted)'>No announcements posted yet.</p>";
+        return;
+      }
+
+      anns.forEach((a, index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.style.padding = "16px";
+
+        div.innerHTML = `
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+            <div>
+              <h3 style="margin-bottom:6px;">${a.title}</h3>
+              <p style="color:var(--muted);margin:0;">${a.message}</p>
+              <p style="margin-top:10px;color:var(--muted);font-size:14px;">🕒 ${a.date}</p>
+            </div>
+
+            <div style="text-align:right;">
+              <button class="btn outline" onclick="deleteAnnouncement(${index})">🗑 Delete</button>
+            </div>
+          </div>
+        `;
+        announcementList.appendChild(div);
+      });
+    }
+
+    function deleteAnnouncement(index) {
+      let anns = getAnnouncements();
+      anns.splice(index, 1);
+      saveAnnouncements(anns);
+      renderAnnouncements();
+    }
+
+    announcementForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById("annTitle").value.trim();
+      const message = document.getElementById("annMessage").value.trim();
+
+      const newAnn = {
+        title,
+        message,
+        date: new Date().toLocaleString()
+      };
+
+      const anns = getAnnouncements();
+      anns.unshift(newAnn); // newest first
+      saveAnnouncements(anns);
+
+      alert("✅ Announcement Posted!");
+      announcementForm.reset();
+      renderAnnouncements();
+    });
+
+    // Initial Load
+    renderAnnouncements();
+  </script>
+
+</body>
+</html>

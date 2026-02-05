@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Event | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+
+      <nav class="nav-links">
+        <a href="admindashboard.html">Dashboard</a>
+        <a href="addevent.html">Add Event</a>
+        <a href="announcements.html">Announcements</a>
+        <a href="uploadphotos.html">Upload Photos</a>
+        <a class="btn outline" href="adminlogin.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page -->
+  <section class="container" style="padding:30px 0;">
+    <div class="card">
+      <h1 style="font-size:30px;margin-bottom:8px;">➕ Add New Event</h1>
+      <p style="color:var(--muted);">Fill event details and publish for students.</p>
+    </div>
+  </section>
+
+  <!-- Add Event Form -->
+  <section class="container" style="margin-bottom:40px;">
+    <div class="card" style="padding:24px;">
+      <form id="addEventForm">
+
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <label>Event Title</label>
+            <input type="text" id="eventTitle" required placeholder="Eg: AI Workshop" />
+          </div>
+
+          <div>
+            <label>Event Type</label>
+            <select id="eventType" required>
+              <option value="">-- Select --</option>
+              <option value="Workshop">Workshop</option>
+              <option value="Seminar">Seminar</option>
+              <option value="Hackathon">Hackathon</option>
+              <option value="Cultural">Cultural</option>
+              <option value="Sports">Sports</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Date</label>
+            <input type="date" id="eventDate" required />
+          </div>
+
+          <div>
+            <label>Time</label>
+            <input type="time" id="eventTime" required />
+          </div>
+
+          <div>
+            <label>Venue</label>
+            <input type="text" id="eventVenue" required placeholder="Eg: Seminar Hall" />
+          </div>
+
+          <div>
+            <label>Status</label>
+            <select id="eventStatus" required>
+              <option value="Open">Open</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <label>Description</label>
+          <textarea id="eventDesc" rows="5" required placeholder="Write event details..."></textarea>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn orange" type="submit">Publish Event</button>
+          <button class="btn outline" type="reset">Clear</button>
+          <a class="btn outline" href="admindashboard.html">⬅ Back</a>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Events List -->
+    <div class="card" style="margin-top:22px;padding:24px;">
+      <h2 style="margin-bottom:12px;">📌 Published Events</h2>
+      <div id="eventList" style="display:grid;gap:12px;"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 GeethsConnect | Add Event
+    </div>
+  </footer>
+
+  <script>
+    const addEventForm = document.getElementById("addEventForm");
+    const eventList = document.getElementById("eventList");
+
+    function getEvents() {
+      return JSON.parse(localStorage.getItem("events")) || [];
+    }
+
+    function saveEvents(events) {
+      localStorage.setItem("events", JSON.stringify(events));
+    }
+
+    function renderEvents() {
+      const events = getEvents();
+      eventList.innerHTML = "";
+
+      if (events.length === 0) {
+        eventList.innerHTML = "<p style='color:var(--muted)'>No events published yet.</p>";
+        return;
+      }
+
+      events.forEach((ev, index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.style.padding = "16px";
+
+        div.innerHTML = `
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+            <div>
+              <h3 style="margin-bottom:6px;">${ev.title}</h3>
+              <p style="color:var(--muted);margin:0;">
+                ${ev.type} • ${ev.date} • ${ev.time} • ${ev.venue}
+              </p>
+              <p style="color:var(--muted);margin-top:8px;">${ev.desc}</p>
+            </div>
+
+            <div style="text-align:right;">
+              <span style="
+                display:inline-block;
+                padding:6px 12px;
+                border-radius:999px;
+                font-weight:700;
+                background:${ev.status === "Open" ? "rgba(34,197,94,0.15)" : "rgba(239,68,68,0.15)"};
+                color:${ev.status === "Open" ? "#22c55e" : "#ef4444"};
+                border:1px solid var(--border);
+              ">
+                ${ev.status}
+              </span>
+
+              <button class="btn outline" style="margin-top:10px;" onclick="deleteEvent(${index})">
+                🗑 Delete
+              </button>
+            </div>
+          </div>
+        `;
+        eventList.appendChild(div);
+      });
+    }
+
+    function deleteEvent(index) {
+      let events = getEvents();
+      events.splice(index, 1);
+      saveEvents(events);
+      renderEvents();
+    }
+
+    addEventForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const newEvent = {
+        title: document.getElementById("eventTitle").value.trim(),
+        type: document.getElementById("eventType").value,
+        date: document.getElementById("eventDate").value,
+        time: document.getElementById("eventTime").value,
+        venue: document.getElementById("eventVenue").value.trim(),
+        status: document.getElementById("eventStatus").value,
+        desc: document.getElementById("eventDesc").value.trim(),
+      };
+
+      const events = getEvents();
+      events.push(newEvent);
+      saveEvents(events);
+
+      alert("✅ Event Published Successfully!");
+      addEventForm.reset();
+      renderEvents();
+    });
+
+    // Initial render
+    renderEvents();
+  </script>
+
+</body>
+</html>

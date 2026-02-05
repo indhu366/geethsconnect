@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload Photos | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+
+      <nav class="nav-links">
+        <a href="admindashboard.html">Dashboard</a>
+        <a href="addevent.html">Add Event</a>
+        <a href="announcements.html">Announcements</a>
+        <a href="uploadphotos.html">Upload Photos</a>
+        <a class="btn outline" href="adminlogin.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Header -->
+  <section class="container" style="padding:30px 0;">
+    <div class="card">
+      <h1 style="font-size:30px;margin-bottom:8px;">🖼️ Upload Photos</h1>
+      <p style="color:var(--muted);">Upload event photos to show in student gallery.</p>
+    </div>
+  </section>
+
+  <!-- Upload Form -->
+  <section class="container" style="margin-bottom:40px;">
+    <div class="card" style="padding:24px;">
+      <h2 style="margin-bottom:14px;">➕ Upload New Photo</h2>
+
+      <form id="photoForm">
+        <label>Photo Title</label>
+        <input type="text" id="photoTitle" required placeholder="Eg: AI Workshop Group Photo" />
+
+        <label>Select Image</label>
+        <input type="file" id="photoFile" accept="image/*" required />
+
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn orange" type="submit">Upload</button>
+          <button class="btn outline" type="reset">Clear</button>
+          <a class="btn outline" href="admindashboard.html">⬅ Back</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Uploaded Photos -->
+    <div class="card" style="margin-top:22px;padding:24px;">
+      <h2 style="margin-bottom:12px;">📌 Uploaded Photos</h2>
+      <div id="photoList" class="grid" style="grid-template-columns:repeat(3,1fr);gap:14px;"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 GeethsConnect | Upload Photos
+    </div>
+  </footer>
+
+  <script>
+    const photoForm = document.getElementById("photoForm");
+    const photoList = document.getElementById("photoList");
+
+    function getPhotos() {
+      return JSON.parse(localStorage.getItem("photos")) || [];
+    }
+
+    function savePhotos(data) {
+      localStorage.setItem("photos", JSON.stringify(data));
+    }
+
+    function renderPhotos() {
+      const photos = getPhotos();
+      photoList.innerHTML = "";
+
+      if (photos.length === 0) {
+        photoList.innerHTML = "<p style='color:var(--muted)'>No photos uploaded yet.</p>";
+        return;
+      }
+
+      photos.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.style.padding = "12px";
+
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.title}" 
+               style="width:100%;height:180px;object-fit:cover;border-radius:12px;" />
+
+          <h3 style="margin-top:10px;font-size:18px;">${p.title}</h3>
+          <p style="color:var(--muted);font-size:13px;margin-top:6px;">🕒 ${p.date}</p>
+
+          <button class="btn outline" style="margin-top:10px;width:100%;" onclick="deletePhoto(${index})">
+            🗑 Delete
+          </button>
+        `;
+
+        photoList.appendChild(div);
+      });
+    }
+
+    function deletePhoto(index) {
+      let photos = getPhotos();
+      photos.splice(index, 1);
+      savePhotos(photos);
+      renderPhotos();
+    }
+
+    photoForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById("photoTitle").value.trim();
+      const file = document.getElementById("photoFile").files[0];
+
+      if (!file) {
+        alert("❌ Please select an image!");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        const imgData = reader.result;
+
+        const newPhoto = {
+          title: title,
+          img: imgData,
+          date: new Date().toLocaleString()
+        };
+
+        const photos = getPhotos();
+        photos.unshift(newPhoto); // newest first
+        savePhotos(photos);
+
+        alert("✅ Photo Uploaded Successfully!");
+        photoForm.reset();
+        renderPhotos();
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    // Initial render
+    renderPhotos();
+  </script>
+
+</body>
+</html>

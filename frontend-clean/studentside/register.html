@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="feedback.html">Feedback</a>
+        <a class="btn outline" href="index.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard Header -->
+  <section class="container" style="padding:30px 0;">
+    <div class="card">
+      <h1 style="font-size:32px;margin-bottom:8px;">Welcome, Student 👋</h1>
+      <p style="color:var(--muted);">
+        Here you can view events, announcements and college activity gallery.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="container">
+    <h2 style="margin-bottom:16px;">Quick Actions</h2>
+
+    <div class="grid grid-3">
+      <a href="events.html" class="card" style="display:block;">
+        <h3>🎯 Explore Events</h3>
+        <p style="color:var(--muted);margin-top:8px;">
+          View all workshops, hackathons, seminars.
+        </p>
+        <p style="margin-top:12px;color:var(--secondary);font-weight:700;">
+          Open →
+        </p>
+      </a>
+
+      <a href="gallery.html" class="card" style="display:block;">
+        <h3>🖼️ Gallery</h3>
+        <p style="color:var(--muted);margin-top:8px;">
+          See photos from past college activities.
+        </p>
+        <p style="margin-top:12px;color:var(--secondary);font-weight:700;">
+          Open →
+        </p>
+      </a>
+
+      <a href="feedback.html" class="card" style="display:block;">
+        <h3>✍️ Feedback</h3>
+        <p style="color:var(--muted);margin-top:8px;">
+          Give feedback about events and activities.
+        </p>
+        <p style="margin-top:12px;color:var(--secondary);font-weight:700;">
+          Open →
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Announcements Section -->
+  <section class="container" style="margin-top:30px;">
+    <h2 style="margin-bottom:16px;">Latest Announcements</h2>
+
+    <div class="grid" style="grid-template-columns:1fr;gap:14px;">
+      <div class="card">
+        <h3 style="margin-bottom:6px;">📢 Workshop Registration Open</h3>
+        <p style="color:var(--muted);">
+          Students can register for the upcoming AI Workshop. Limited seats available.
+        </p>
+        <p style="margin-top:10px;color:var(--secondary);font-weight:700;">
+          Posted: 02 Feb 2026
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:6px;">📢 Hackathon Team Formation</h3>
+        <p style="color:var(--muted);">
+          Create your team and update details before 10 Feb 2026.
+        </p>
+        <p style="margin-top:10px;color:var(--secondary);font-weight:700;">
+          Posted: 01 Feb 2026
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:6px;">📢 Cultural Fest Volunteers</h3>
+        <p style="color:var(--muted);">
+          Volunteers are required for fest management. Contact student coordinator.
+        </p>
+        <p style="margin-top:10px;color:var(--secondary);font-weight:700;">
+          Posted: 30 Jan 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 GeethsConnect | Student Dashboard
+    </div>
+  </footer>
+
+</body>
+</html>

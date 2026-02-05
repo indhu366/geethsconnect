@@ -1,29 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeethsConnect | Home</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
 <body>
-  <header>
-    <div class="collage-title">
-      <img src="logo.png">
+
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a class="btn outline" href="login.html">Login</a>
+        <a class="btn orange" href="register.html">Register</a>
+      </nav>
     </div>
   </header>
-    &nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;
-  <div class="main-wrapper">
-    <div class="header">
-      <div class="geethsconnect-title">GeethsConnect</div>
-      <div class="tagline-title"><i>"Engage.Empower.Excel"</i></div>
-  
-    </div>
-    <div class="cards">
-      <div class="card-block" onclick="window.location.href='studentloginpage.html'">
-        <i class="fas fa-calendar-check"></i>
-        <div class="card-label" style="color: #0b3bacf0;">Register for Events</div>
 
+  <section class="hero">
+    <div class="container hero-flex">
+      <div>
+        <h1>Connect. Learn. Grow.</h1>
+        <p>
+          GeethsConnect helps students stay updated with events, workshops, hackathons,
+          announcements and gallery.
+        </p>
+        <a class="btn" href="events.html">Explore Events</a>
+        <a class="btn outline" href="login.html" style="margin-left:10px;">Student Login</a>
       </div>
-      <div class="card-block" onclick="window.location.href='adminlogin.html'">
-        <i class="fas fa-upload"></i>
-        <div class="card-label" style="color:#0b3bacf0" button="card-label">Upload Events</div>
+
+      <div class="card" style="width:360px;">
+        <h3 style="margin-bottom:10px;">🔥 Upcoming Event</h3>
+        <p style="color:var(--muted);margin-bottom:10px;">
+          Hackathon • Workshop • Seminar
+        </p>
+        <a class="btn orange" href="events.html">View Now</a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="container">
+    <h2 style="margin-bottom:16px;">Why GeethsConnect?</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>📢 Announcements</h3>
+        <p style="color:var(--muted);margin-top:8px;">Get latest college updates quickly.</p>
+      </div>
+      <div class="card">
+        <h3>🎯 Events</h3>
+        <p style="color:var(--muted);margin-top:8px;">Explore and register for events easily.</p>
+      </div>
+      <div class="card">
+        <h3>🖼️ Gallery</h3>
+        <p style="color:var(--muted);margin-top:8px;">See photos from college activities.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 GeethsConnect | Student Portal
+    </div>
+  </footer>
+
 </body>
 </html>

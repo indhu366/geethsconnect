@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+
+      <nav class="nav-links">
+        <a href="admindashboard.html">Dashboard</a>
+        <a href="addevent.html">Add Event</a>
+        <a href="announcements.html">Announcements</a>
+        <a href="uploadphotos.html">Upload Photos</a>
+        <a class="btn outline" href="adminlogin.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="container" style="padding:30px 0;">
+    <div class="card">
+      <h1 style="font-size:32px;margin-bottom:8px;">Admin Dashboard 👨‍💻</h1>
+      <p style="color:var(--muted);">
+        Manage events, announcements and gallery updates from here.
+      </p>
+    </div>
+  </section>
+
+  <!-- Dashboard Stats -->
+  <section class="container">
+    <h2 style="margin-bottom:16px;">Overview</h2>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>🎯 Total Events</h3>
+        <p style="font-size:34px;font-weight:800;margin-top:10px;color:var(--secondary);">12</p>
+        <p style="color:var(--muted);margin-top:6px;">Events created so far</p>
+      </div>
+
+      <div class="card">
+        <h3>👥 Registered Students</h3>
+        <p style="font-size:34px;font-weight:800;margin-top:10px;color:var(--secondary);">250</p>
+        <p style="color:var(--muted);margin-top:6px;">Students registered</p>
+      </div>
+
+      <div class="card">
+        <h3>📢 Announcements</h3>
+        <p style="font-size:34px;font-weight:800;margin-top:10px;color:var(--secondary);">8</p>
+        <p style="color:var(--muted);margin-top:6px;">Announcements posted</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="container" style="margin-top:30px;">
+    <h2 style="margin-bottom:16px;">Quick Actions</h2>
+
+    <div class="grid grid-3">
+      <a href="addevent.html" class="card" style="display:block;">
+        <h3>➕ Add New Event</h3>
+        <p style="color:var(--muted);margin-top:8px;">
+          Create and publish a new college event.
+        </p>
+        <p style="margin-top:12px;color:var(--secondary);font-weight:700;">Open →</p>
+      </a>
+
+      <a href="announcements.html" class="card" style="display:block;">
+        <h3>📢 Post Announcement</h3>
+        <p style="color:var(--muted);margin-top:8px;">
+          Share important updates to students.
+        </p>
+        <p style="margin-top:12px;color:var(--secondary);font-weight:700;">Open →</p>
+      </a>
+
+      <a href="uploadphotos.html" class="card" style="display:block;">
+        <h3>🖼️ Upload Photos</h3>
+        <p style="color:var(--muted);margin-top:8px;">
+          Add event photos to student gallery.
+        </p>
+        <p style="margin-top:12px;color:var(--secondary);font-weight:700;">Open →</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Recent Activity -->
+  <section class="container" style="margin-top:30px;margin-bottom:40px;">
+    <h2 style="margin-bottom:16px;">Recent Activity</h2>
+
+    <div class="grid" style="grid-template-columns:1fr;gap:14px;">
+      <div class="card">
+        <h3 style="margin-bottom:6px;">✅ Event Added: AI Workshop</h3>
+        <p style="color:var(--muted);">Added on: 02 Feb 2026</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:6px;">📢 Announcement Posted</h3>
+        <p style="color:var(--muted);">Hackathon registration open.</p>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:6px;">🖼️ Photos Uploaded</h3>
+        <p style="color:var(--muted);">Workshop gallery updated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 GeethsConnect | Admin Dashboard
+    </div>
+  </footer>
+
+</body>
+</html>

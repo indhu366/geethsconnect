@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="feedback.html">Feedback</a>
+        <a class="btn outline" href="index.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Header -->
+  <section class="container" style="padding:30px 0;">
+    <div class="card">
+      <h1 style="font-size:32px;margin-bottom:8px;">Feedback ✍️</h1>
+      <p style="color:var(--muted);">Share your feedback to improve future events and activities.</p>
+    </div>
+  </section>
+
+  <!-- Feedback Form -->
+  <section class="container" style="margin-bottom:40px;">
+    <div class="card" style="padding:26px;">
+      <h2 style="margin-bottom:14px;">Submit Your Feedback</h2>
+
+      <form id="feedbackForm">
+        <label>Choose Event</label>
+        <select id="eventSelect" required>
+          <option value="">Select Event</option>
+          <option>AI Workshop</option>
+          <option>Code Sprint Hackathon</option>
+          <option>Cyber Security Seminar</option>
+          <option>Web Development Workshop</option>
+          <option>Placement Guidance Seminar</option>
+        </select>
+
+        <label>Rating</label>
+        <div class="rating">
+          <input type="radio" name="rate" value="5" id="r5"><label for="r5">⭐</label>
+          <input type="radio" name="rate" value="4" id="r4"><label for="r4">⭐</label>
+          <input type="radio" name="rate" value="3" id="r3"><label for="r3">⭐</label>
+          <input type="radio" name="rate" value="2" id="r2"><label for="r2">⭐</label>
+          <input type="radio" name="rate" value="1" id="r1"><label for="r1">⭐</label>
+        </div>
+
+        <label>Message</label>
+        <textarea id="feedbackMsg" required placeholder="Write your feedback here..."></textarea>
+
+        <button class="btn orange full" type="submit">Submit Feedback</button>
+      </form>
+
+      <div id="successBox" class="card" style="margin-top:16px;display:none;">
+        <h3>✅ Thank you!</h3>
+        <p style="color:var(--muted);margin-top:6px;">Your feedback has been submitted successfully.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">© 2026 GeethsConnect | Feedback</div>
+  </footer>
+
+  <style>
+    .rating { display:flex; flex-direction:row-reverse; justify-content:flex-end; gap:6px; margin:8px 0 16px; }
+    .rating input { display:none; }
+    .rating label { font-size:28px; cursor:pointer; filter: grayscale(100%); transition:0.2s; }
+    .rating input:checked ~ label { filter: grayscale(0%); }
+    .rating label:hover, .rating label:hover ~ label { filter: grayscale(0%); }
+  </style>
+
+  <script>
+    const form = document.getElementById("feedbackForm");
+    const successBox = document.getElementById("successBox");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const eventName = document.getElementById("eventSelect").value;
+      const msg = document.getElementById("feedbackMsg").value.trim();
+      const ratingEl = document.querySelector('input[name="rate"]:checked');
+      const rating = ratingEl ? ratingEl.value : null;
+
+      if (!eventName || !msg || !rating) {
+        alert("Please select event, rating and enter message!");
+        return;
+      }
+
+      // get studentId from localStorage (set during login)
+      const studentId = localStorage.getItem("studentId");
+      if (!studentId) {
+        alert("You must be logged in to submit feedback!");
+        return;
+      }
+
+      const feedbackData = {
+        studentId: parseInt(studentId),
+        event: eventName,
+        rating: parseInt(rating),
+        message: msg
+      };
+
+      try {
+        const response = await fetch("http://localhost:3000/api/feedback", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(feedbackData)
+        });
+
+        if (response.ok) {
+          successBox.style.display = "block";
+          form.reset();
+          setTimeout(() => { successBox.style.display = "none"; }, 3500);
+        } else {
+          const err = await response.json();
+          alert("Error: " + err.message);
+        }
+      } catch (error) {
+        alert("Server error! Try again later.");
+        console.error(error);
+      }
+    });
+  </script>
+
+</body>
+</html>

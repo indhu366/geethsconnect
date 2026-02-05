@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Details | GeethsConnect</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <h2 class="logo">GeethsConnect</h2>
+
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="feedback.html">Feedback</a>
+        <a class="btn outline" href="index.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <section class="container" style="padding:30px 0;">
+    
+    <!-- Back Button -->
+    <a href="events.html" class="btn outline" style="margin-bottom:18px;">
+      ⬅ Back to Events
+    </a>
+
+    <!-- Event Details Card -->
+    <div class="card" style="padding:26px;">
+
+      <div style="display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;">
+        <div>
+          <h1 style="font-size:34px;margin-bottom:10px;">🤖 AI Workshop</h1>
+          <span style="
+            display:inline-block;
+            padding:6px 12px;
+            border-radius:999px;
+            font-weight:700;
+            background:rgba(249,115,22,0.15);
+            color:var(--secondary);
+            border:1px solid rgba(249,115,22,0.35);
+          ">
+            Workshop
+          </span>
+        </div>
+
+        <div style="text-align:right;">
+          <p style="color:var(--muted);">Event Status</p>
+          <p style="font-weight:800;color:#22c55e;">Open</p>
+        </div>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0;">
+
+      <!-- Event Info -->
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:14px;">
+        <div class="card" style="padding:14px;">
+          <h3 style="margin-bottom:6px;">📅 Date</h3>
+          <p style="color:var(--muted);">10 Feb 2026</p>
+        </div>
+
+        <div class="card" style="padding:14px;">
+          <h3 style="margin-bottom:6px;">⏰ Time</h3>
+          <p style="color:var(--muted);">10:00 AM - 1:00 PM</p>
+        </div>
+
+        <div class="card" style="padding:14px;">
+          <h3 style="margin-bottom:6px;">📍 Venue</h3>
+          <p style="color:var(--muted);">Seminar Hall</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div style="margin-top:18px;">
+        <h2 style="margin-bottom:10px;">About this Event</h2>
+        <p style="color:var(--muted);line-height:1.7;">
+          This AI Workshop is designed for students to learn the basics of Artificial Intelligence,
+          Machine Learning and real-time applications.  
+          You will work on mini hands-on tasks and understand how AI models work.
+        </p>
+
+        <ul style="margin-top:12px;margin-left:18px;color:var(--muted);line-height:1.8;">
+          <li>Introduction to AI & ML</li>
+          <li>Hands-on Demo session</li>
+          <li>Mini project guidance</li>
+          <li>Certificate for participants</li>
+        </ul>
+      </div>
+
+      <!-- Buttons -->
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="btn orange" id="registerBtn">Register Now</button>
+        <button class="btn outline" id="shareBtn">Share Event</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 GeethsConnect | Event Details
+    </div>
+  </footer>
+
+  <script>
+  const eventData = JSON.parse(localStorage.getItem("selectedEvent"));
+
+  if (!eventData) {
+    alert("No event selected!");
+    window.location.href = "events.html";
+  } else {
+    document.querySelector("h1").innerHTML = "🎯 " + eventData.title;
+    document.querySelector("span").innerText = eventData.type;
+
+    const infoCards = document.querySelectorAll(".grid .card p");
+    infoCards[0].innerText = eventData.date;
+    infoCards[1].innerText = eventData.time;
+    infoCards[2].innerText = eventData.venue;
+
+    document.querySelector("p").innerText = eventData.desc;
+  }
+</script>
+
+
+</body>
+</html>
